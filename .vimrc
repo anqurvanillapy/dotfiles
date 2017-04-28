@@ -61,18 +61,13 @@ filetype plugin indent on   " required
 " YouCompleteMe locates some language source code
 let g:ycm_rust_src_path = '~/Dev/src/rustc-1.8.0/src'
 
-" - Indentation
-"   + Translate tabs to spaces, instead of those in Makefile
-"   + Show all the spaces and tabs as special chars
-" - Ruler and numberscriptencoding utf-8
-
 set encoding=utf-8
 set t_Co=256
 syntax on
 
 set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType make setlocal noexpandtab
-set softtabstop=4           " makes the spaces feel like real tabs
+set softtabstop=4
 set colorcolumn=80
 
 set list
@@ -90,5 +85,5 @@ python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 
-" YouCompleteMe fixs
+" YouCompleteMe fixes
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
