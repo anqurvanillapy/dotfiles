@@ -21,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rust-lang/rust.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'fatih/vim-go'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -66,9 +67,11 @@ set t_Co=256
 syntax on
 
 set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType make setlocal noexpandtab
 set softtabstop=4
 set colorcolumn=80
+
+" Makefile.
+autocmd FileType make setlocal noexpandtab
 
 set list
 set listchars=tab:▒░,trail:░,eol:✓,precedes:☜,extends:☞,nbsp:░
