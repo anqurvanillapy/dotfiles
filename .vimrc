@@ -67,12 +67,14 @@ set encoding=utf-8
 set t_Co=256
 syntax on
 
-set tabstop=4 shiftwidth=4 expandtab
-set softtabstop=4
+set tabstop=4 shiftwidth=4 expandtab softtabstop=4
 set colorcolumn=80
 
 " Makefile.
 autocmd FileType make setlocal noexpandtab
+
+" JavaScript/CSS/HTML.
+autocmd BufEnter *.js,*.css,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 set list
 set listchars=tab:▒░,trail:░,eol:✓,precedes:☜,extends:☞,nbsp:░
@@ -88,10 +90,6 @@ set laststatus=2
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
-
-" Linters.
-autocmd BufWritePost *.js silent !standard --fix %
-set autoread
 
 " YouCompleteMe fixes
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
