@@ -72,6 +72,7 @@ set colorcolumn=80
 
 " Makefile.
 autocmd FileType make setlocal noexpandtab
+autocmd BufEnter nginx.conf setlocal noexpandtab
 
 " JavaScript/CSS/HTML.
 autocmd BufEnter *.js,*.css,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
