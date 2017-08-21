@@ -17,7 +17,7 @@
 	"Init a Preact component": {
 		"prefix": "preact-component",
 		"body": [
-			"import { h, Component } from 'preact' // eslint-disable-line no-unused-vars",
+			"import { h, Component } from 'preact'",
 			"",
 			"export default class $1 extends Component {",
 			"\tconstructor () {",
@@ -35,7 +35,7 @@
 	"Init a Preact component (without constructor)": {
 		"prefix": "preact-component-noctor",
 		"body": [
-			"import { h } from 'preact' // eslint-disable-line no-unused-vars",
+			"import { h } from 'preact'",
 			"",
 			"const $1 = () => (",
 			"\t$2",
