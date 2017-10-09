@@ -74,8 +74,9 @@ set colorcolumn=80
 autocmd FileType make setlocal noexpandtab
 autocmd BufEnter nginx.conf setlocal noexpandtab
 
-" JavaScript/CSS/HTML.
+" 2 whitespaces for Lua, JavaScript/CSS/HTML.
 autocmd BufEnter *.js,*.css,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd BufEnter *.lua setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 set list
 set listchars=tab:▒░,trail:░,eol:✓,precedes:☜,extends:☞,nbsp:░
