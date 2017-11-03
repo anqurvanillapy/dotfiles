@@ -58,7 +58,7 @@ filetype plugin indent on   " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-""" My Custom Configs
+""" My Custom Configs.
 
 command! -range=% -nargs=0 Space2Tab execute
   \ ':silent! <line1>,<line2>s#^\( \{'.&ts.
@@ -97,6 +97,7 @@ autocmd BufEnter *.c,*.cc,*.h,*.hpp,*.cpp call SetCppOptions()
 autocmd BufWritePre *.c,*.cc,*.h,*.hpp,*.cpp Space2Tab
 function SetCppOptions()
   nnoremap <buffer> <localleader>c I// <esc>
+  nnoremap <buffer> <localleader>C I<esc>xxx
   setlocal cindent
   setlocal cinoptions=(0,u0,U0
 endfunction
