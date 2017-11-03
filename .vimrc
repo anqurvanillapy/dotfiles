@@ -60,6 +60,10 @@ filetype plugin indent on   " required
 
 """ My Custom Configs
 
+command! -range=% -nargs=0 Space2Tab execute
+  \ ':silent! <line1>,<line2>s#^\( \{'.&ts.
+  \ '\}\)\+#\=repeat("\t", len(submatch(0))/'.&ts.')'
+
 " YouCompleteMe locates some language source code
 let g:ycm_rust_src_path = '~/Dev/src/rustc-1.8.0/src'
 
@@ -77,6 +81,15 @@ autocmd BufEnter nginx.conf setlocal noexpandtab
 " 2 whitespaces for Lua, JavaScript/CSS/HTML.
 autocmd BufEnter *.js,*.css,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd BufEnter *.lua setlocal tabstop=2 shiftwidth=2 softtabstop=2
+
+" Indent with tabs, align with spaces in C/C++.
+autocmd BufEnter *.c,*.cc,*.h,*.hpp,*.cpp call SetCppOptions()
+autocmd BufWritePre *.c,*.cc,*.h,*.hpp,*.cpp Space2Tab
+function SetCppOptions()
+  nnoremap <buffer> <localleader>c I// <esc>
+  setlocal cindent
+  setlocal cinoptions=(0,u0,U0
+endfunction
 
 set list
 set listchars=tab:▒░,trail:░,eol:✓,precedes:☜,extends:☞,nbsp:░
