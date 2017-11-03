@@ -21,5 +21,13 @@
 			"\t$2",
 			"}"
 		]
+	},
+	"If err not nil": {
+		"prefix": "errnotnil",
+		"body": [
+			"if err != nil {",
+			"\t$1",
+			"}"
+		]
 	}
 }
