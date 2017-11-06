@@ -132,15 +132,17 @@ def GetCompilationInfoForFile(filename):
 
 
 def FlagsForFile(filename, **kwargs):
+    fallback_flags = {
+        'flags': flags,
+        'include_paths_relative_to_dir': DirectoryOfThisScript()
+    }
+
     if not database:
-        return {
-            'flags': flags,
-            'include_paths_relative_to_dir': DirectoryOfThisScript()
-        }
+        return fallback_flags
 
     compilation_info = GetCompilationInfoForFile(filename)
     if not compilation_info:
-        return None
+        return fallback_flags
 
     # Bear in mind that compilation_info.compiler_flags_ does NOT return a
     # python list, but a "list-like" StringVec object.
