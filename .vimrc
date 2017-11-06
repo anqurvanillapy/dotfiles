@@ -97,8 +97,10 @@ endfunction
 " `autopep8' for Python.
 autocmd BufWritePost *.py call Autopep8()
 function Autopep8()
-  execute ':silent %!autopep8 %'
+  let b:loc=line('.')
+  :silent %!autopep8 %
   :w
+  execute ':'b:loc
 endfunction
 
 " Indent with tabs, align with spaces in C/C++.
