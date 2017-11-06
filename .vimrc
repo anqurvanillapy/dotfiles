@@ -88,9 +88,14 @@ set iskeyword-=_
 autocmd FileType make setlocal noexpandtab
 autocmd BufEnter nginx.conf setlocal noexpandtab
 
-" 2 whitespaces for Lua, JavaScript/CSS/HTML.
-autocmd BufEnter *.js,*.css,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd BufEnter *.lua setlocal tabstop=2 shiftwidth=2 softtabstop=2
+" Small indents (2 whitespaces) for Lua, JavaScript/CSS/HTML.
+autocmd BufEnter *.lua,*.js,*.css,*.html call SetSmallIndentOptions()
+function SetSmallIndentOptions()
+  setlocal tabstop=2 shiftwidth=2 softtabstop=2
+endfunction
+
+" `autopep8' for Python.
+autocmd BufWritePre *.py execute ':silent %!autopep8 %'
 
 " Indent with tabs, align with spaces in C/C++.
 autocmd BufEnter *.c,*.cc,*.h,*.hpp,*.cpp call SetCppOptions()
@@ -115,5 +120,5 @@ python3 del powerline_setup
 
 "" Workarounds or fixes.
 
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_rust_src_path='!rustc --print sysroot'.'/lib/rustlib/src/rust/src'
