@@ -100,7 +100,7 @@ function Autopep8()
   let b:loc=line('.')
   :silent %!autopep8 %
   :w
-  execute ':'b:loc
+  execute ':'.b:loc
 endfunction
 
 " Indent with tabs, align with spaces in C/C++.
@@ -111,6 +111,10 @@ function SetCppOptions()
   nnoremap <buffer> <localleader>C I<esc>xxx
   setlocal cindent
   setlocal cinoptions=(0,u0,U0
+
+  if filereadable('CMakeLists.txt')
+    let g:ale_linters={'cpp':[], 'c':[]}
+  endif
 endfunction
 
 "" Themes and plugins.
