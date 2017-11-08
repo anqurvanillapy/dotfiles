@@ -104,18 +104,27 @@ function Autopep8()
 endfunction
 
 " Indent with tabs, align with spaces in C/C++.
-autocmd BufEnter *.c,*.cc,*.h,*.hpp,*.cpp call SetCppOptions()
-autocmd BufWritePre *.c,*.cc,*.h,*.hpp,*.cpp Space2Tab
+autocmd BufEnter *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx call SetCppOptions()
+autocmd BufWritePre *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx Space2Tab
 function SetCppOptions()
-  nnoremap <buffer> <localleader>c I// <esc>
-  nnoremap <buffer> <localleader>C I<esc>xxx
   setlocal cindent
   setlocal cinoptions=(0,u0,U0
-
   if filereadable('CMakeLists.txt')
     let g:ale_linters={'cpp':[], 'c':[]}
   endif
 endfunction
+
+" Comment toggling.
+function CommentToggle(cmt)
+  let b:cmtlen=strlen(a:cmt) + 1
+  execute ':nnoremap <buffer> <localleader>c I'.a:cmt.' <esc>'
+  execute ':nnoremap <buffer> <localleader>C I<esc>'.repeat('x', b:cmtlen)
+endfunction
+
+autocmd BufEnter .vimrc call CommentToggle('"')
+autocmd BufEnter *.lua call CommentToggle('--')
+autocmd BufEnter *.js,*.c,*.cc,*.h,*.hpp,*.cpp,*.cxx call CommentToggle('//')
+autocmd BufEnter *.py,*.sh call CommentToggle('#')
 
 "" Themes and plugins.
 
