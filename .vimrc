@@ -118,7 +118,7 @@ endfunction
 function CommentToggle(cmt)
   let b:cmtlen=strlen(a:cmt) + 1
   execute ':nnoremap <buffer> <localleader>c I'.a:cmt.' <esc>'
-  execute ':nnoremap <buffer> <localleader>C I<esc>'.repeat('x', b:cmtlen)
+  execute ':nnoremap <buffer> <localleader>C ^'.repeat('x', b:cmtlen)
 endfunction
 
 autocmd BufEnter .vimrc call CommentToggle('"')
