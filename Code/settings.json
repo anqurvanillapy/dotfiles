@@ -1,15 +1,17 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "vim.disableAnnoyingNeovimMessage": true,
-    "window.zoomLevel": 0,
-    "files.insertFinalNewline": true,
-    "editor.fontSize": 15,
-    "files.encoding": "utf8",
-    "editor.fontFamily": "'Source Code Pro', Consolas, Courier, monospace",
-    "editor.rulers": [
-        70, 80
-    ],
-    "editor.tabSize": 2,
-    "lualinter.enable": true,
-    "workbench.startupEditor": "newUntitledFile"
+  "window.zoomLevel": 0,
+  "files.insertFinalNewline": true,
+  "editor.fontSize": 15,
+  "files.encoding": "utf8",
+  "editor.fontFamily": "'Source Code Pro', Consolas, Courier, monospace",
+  "editor.rulers": [
+    70, 80
+  ],
+  "editor.tabSize": 2,
+  "workbench.startupEditor": "newUntitledFile",
+  "team.showWelcomeMessage": false,
+  "extensions.ignoreRecommendations": false,
+  "editor.renderIndentGuides": true,
+  "editor.renderWhitespace": "all"
 }
