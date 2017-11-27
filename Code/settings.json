@@ -1,7 +1,5 @@
-// Place your settings in this file to overwrite the default settings
 {
   "window.zoomLevel": 0,
-  "files.insertFinalNewline": true,
   "editor.fontSize": 15,
   "files.encoding": "utf8",
   "editor.fontFamily": "'Source Code Pro', Consolas, Courier, monospace",
@@ -13,5 +11,8 @@
   "team.showWelcomeMessage": false,
   "extensions.ignoreRecommendations": false,
   "editor.renderIndentGuides": true,
-  "editor.renderWhitespace": "all"
+  "editor.renderWhitespace": "all",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true
 }
