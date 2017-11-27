@@ -84,6 +84,12 @@ set number
 " Underscore should not be skipped.
 set iskeyword-=_
 
+" Forgot to `sudo'?  Use `w!!'.
+cmap w!! w !sudo tee % >/dev/null
+
+" Toggle paste mode.
+set pastetoggle=<leader>p
+
 "" File-specific.
 
 " Makefile.
@@ -144,3 +150,9 @@ python3 del powerline_setup
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_extra_conf_vim_data = ['&filetype']
 let g:ycm_rust_src_path='!rustc --print sysroot'.'/lib/rustlib/src/rust/src'
+
+""" Local settings.
+
+if filereadable("~/.vimrc.local")
+  source ~/.vimrc.local
+endif
