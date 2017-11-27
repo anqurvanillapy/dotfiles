@@ -37,7 +37,9 @@ Plugin 'w0rp/ale'
 " Pass the path to set the runtimepath properly.
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
