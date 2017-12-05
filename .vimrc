@@ -131,7 +131,8 @@ endfunction
 
 autocmd BufEnter .vimrc call CommentToggle('"')
 autocmd BufEnter *.lua call CommentToggle('--')
-autocmd BufEnter *.js,*.c,*.cc,*.h,*.hpp,*.cpp,*.cxx call CommentToggle('//')
+autocmd BufEnter *.go,*.js,*.c,*.cc,*.h,*.hpp,*.cpp,*.cxx
+  \ call CommentToggle('//')
 autocmd BufEnter *.py,*.sh call CommentToggle('#')
 
 "" Themes and plugins.
