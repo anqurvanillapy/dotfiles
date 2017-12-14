@@ -150,7 +150,17 @@ python3 del powerline_setup
 
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_extra_conf_vim_data = ['&filetype']
-let g:ycm_rust_src_path='!rustc --print sysroot'.'/lib/rustlib/src/rust/src'
+let g:ycm_rust_src_path=system('echo -n `rustc --print sysroot`')
+  \ .'/lib/rustlib/src/rust/src'
+
+" Fix ALE included directories:
+" * node-gyp header files
+let g:node_gyp_dir=system('echo -n `realpath ~`/.node-gyp/')
+let g:node_gyp_latestver=system('echo -n `ls '.g:node_gyp_dir.' | tail -1`')
+let g:ale_cpp_clang_options=
+  \ '-std=c++14 -Wall'
+  \ .' -I'.g:node_gyp_dir.g:node_gyp_latestver.'/include/node'
+let g:ale_cpp_gcc_options=g:ale_cpp_clang_options
 
 """ Local settings.
 
