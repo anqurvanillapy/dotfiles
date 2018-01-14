@@ -81,8 +81,9 @@ set listchars=tab:▒░,trail:░,eol:✓,precedes:☜,extends:☞,nbsp:░
 set ruler
 set number
 
-" Underscore should not be skipped.
 set iskeyword-=_
+set iskeyword+="。"
+set iskeyword+="，"
 
 " Forgot to `sudo'?  Use `w!!'.
 cmap w!! w !sudo tee % >/dev/null
