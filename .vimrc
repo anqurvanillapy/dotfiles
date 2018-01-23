@@ -113,8 +113,8 @@ function Autopep8()
 endfunction
 
 " Indent with tabs, align with spaces in C/C++.
-autocmd BufEnter *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx call SetCppOptions()
-autocmd BufWritePre *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx Space2Tab
+autocmd BufEnter *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y call SetCppOptions()
+autocmd BufWritePre *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y Space2Tab
 function SetCppOptions()
   setlocal cindent
   setlocal cinoptions=(0,u0,U0
@@ -132,7 +132,7 @@ endfunction
 
 autocmd BufEnter .vimrc call CommentToggle('"')
 autocmd BufEnter *.lua call CommentToggle('--')
-autocmd BufEnter *.go,*.js,*.c,*.cc,*.h,*.hpp,*.cpp,*.cxx
+autocmd BufEnter *.go,*.js,*.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y
   \ call CommentToggle('//')
 autocmd BufEnter *.py,*.sh call CommentToggle('#')
 
