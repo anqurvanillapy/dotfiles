@@ -104,11 +104,11 @@ function SetSmallIndentOptions()
 endfunction
 
 " `autopep8' for Python.
-autocmd BufWritePost *.py call Autopep8()
-function Autopep8()
+autocmd BufWritePost *.py call PyBlack()
+function PyBlack()
   let b:loc=line('.')
-  :silent %!autopep8 %
-  :w
+  :silent %!black -l 79 % > /dev/null
+  :edit!
   execute ':'.b:loc
 endfunction
 
