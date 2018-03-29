@@ -93,21 +93,30 @@ set pastetoggle=<leader>p
 
 "" File-specific.
 
-" Makefile.
+" Preserved tabs.
 autocmd FileType make setlocal noexpandtab
 autocmd BufEnter nginx.conf setlocal noexpandtab
 
-" Small indents (2 whitespaces) for Vim script, Lua, JavaScript/CSS/HTML.
+" Small indents (2 whitespaces) e.g. Vim script, Lua, JavaScript/CSS/HTML.
 autocmd BufEnter .vimrc,*.lua,*.js,*.css,*.html call SetSmallIndentOptions()
 function SetSmallIndentOptions()
   setlocal tabstop=2 shiftwidth=2 softtabstop=2
 endfunction
 
-" `autopep8' for Python.
+" `black' for Python.
 autocmd BufWritePost *.py call PyBlack()
 function PyBlack()
   let b:loc=line('.')
   :silent %!black -l 79 % > /dev/null
+  :edit!
+  execute ':'.b:loc
+endfunction
+
+" `rustfmt' for Rust.
+autocmd BufWritePost *.rs call Rustfmt()
+function Rustfmt()
+  let b:loc=line('.')
+  :silent %!rustfmt %
   :edit!
   execute ':'.b:loc
 endfunction
@@ -132,7 +141,7 @@ endfunction
 
 autocmd BufEnter .vimrc call CommentToggle('"')
 autocmd BufEnter *.lua call CommentToggle('--')
-autocmd BufEnter *.go,*.js,*.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y,*.java
+autocmd BufEnter *.go,*.js,*.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y,*.java,*.rs
   \ call CommentToggle('//')
 autocmd BufEnter *.py,*.sh call CommentToggle('#')
 
