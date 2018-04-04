@@ -91,6 +91,10 @@ cmap w!! w !sudo tee % >/dev/null
 " Toggle paste mode.
 set pastetoggle=<leader>p
 
+" Ignore large directories in netrw.
+let g:netrw_list_hide='node_modules'
+let g:netrw_hide=1
+
 "" File-specific.
 
 " Preserved tabs.
@@ -168,7 +172,7 @@ let g:ycm_rust_src_path=system('echo -n `rustc --print sysroot`')
 let g:node_gyp_dir=system('echo -n `realpath ~`/.node-gyp/')
 let g:node_gyp_latestver=system('echo -n `ls '.g:node_gyp_dir.' | tail -1`')
 let g:ale_cpp_clang_options=
-  \ '-std=c++17 -Wall'
+  \ '-std=c++14 -Wall'
   \ .' -I'.g:node_gyp_dir.g:node_gyp_latestver.'/include/node'
 let g:ale_cpp_gcc_options=g:ale_cpp_clang_options
 
