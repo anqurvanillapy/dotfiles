@@ -168,7 +168,7 @@ let g:ycm_rust_src_path=system('echo -n `rustc --print sysroot`')
 let g:node_gyp_dir=system('echo -n `realpath ~`/.node-gyp/')
 let g:node_gyp_latestver=system('echo -n `ls '.g:node_gyp_dir.' | tail -1`')
 let g:ale_cpp_clang_options=
-  \ '-std=c++14 -Wall'
+  \ '-std=c++17 -Wall'
   \ .' -I'.g:node_gyp_dir.g:node_gyp_latestver.'/include/node'
 let g:ale_cpp_gcc_options=g:ale_cpp_clang_options
 
