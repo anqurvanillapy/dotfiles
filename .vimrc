@@ -95,6 +95,47 @@ set pastetoggle=<leader>p
 let g:netrw_list_hide='node_modules'
 let g:netrw_hide=1
 
+" Increment/Decrement a metasyntactic variable.
+function! s:IncMetasynVar(step)
+  if type(a:step) != type(0)
+    return
+  endif
+
+  let b:vars = [
+    \ 'foo', 'bar', 'baz',
+    \ 'qux', 'quux', 'corge',
+    \ 'grault', 'garply', 'waldo',
+    \ 'fred', 'plugh', 'xyzzy', 'thud'
+  \ ]
+  let b:cword = expand('<cword>')
+  let b:i = index(b:vars, b:cword)
+
+  if b:i == -1
+    if a:step > 0
+      execute "normal! \<C-a>"
+      return
+    endif
+
+    execute "normal! \<C-x>"
+    return
+  endif
+
+  let b:i += a:step
+
+  if b:i == -1
+    let b:i = len(b:vars) - 1
+  elseif (b:i == len(b:vars))
+    let b:i = 0
+  endif
+
+  call setreg('w', b:vars[b:i])
+  normal! "bviw"wp
+endfunction
+
+" Remap inc/dec.
+nnoremap <C-a> :call <SID>IncMetasynVar(1)<Enter>
+nnoremap <C-x> :call <SID>IncMetasynVar(-1)<Enter>
+
 "" File-specific.
 
 " Preserved tabs.
