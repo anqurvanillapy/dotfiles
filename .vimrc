@@ -37,8 +37,6 @@ Plugin 'w0rp/ale'
 " Pass the path to set the runtimepath properly.
 " Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " Install L9 and avoid a Naming conflict if you've already installed a
@@ -213,7 +211,7 @@ let g:ycm_rust_src_path=system('echo -n `rustc --print sysroot`')
 let g:node_gyp_dir=system('echo -n `realpath ~`/.node-gyp/')
 let g:node_gyp_latestver=system('echo -n `ls '.g:node_gyp_dir.' | tail -1`')
 let g:ale_cpp_clang_options=
-  \ '-std=c++14 -Wall'
+  \ '-std=c++17 -Wall'
   \ .' -I'.g:node_gyp_dir.g:node_gyp_latestver.'/include/node'
 let g:ale_cpp_gcc_options=g:ale_cpp_clang_options
 
