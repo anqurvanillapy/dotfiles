@@ -134,6 +134,18 @@ endfunction
 nnoremap <C-a> :call <SID>IncMetasynVar(1)<Enter>
 nnoremap <C-x> :call <SID>IncMetasynVar(-1)<Enter>
 
+" Direct the table of :digraphs to a read-only buffer.
+function! TabDigraphs()
+  redir => msg
+    silent digraphs
+  redir END
+  tabnew
+  setlocal buftype=nofile bufhidden=wipe
+  silent put =msg
+  setlocal nomodified
+endfunction
+command! TabDigraphs call TabDigraphs()
+
 "" File-specific.
 
 " Preserved tabs.
