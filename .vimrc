@@ -23,6 +23,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'fatih/vim-go'
 Plugin 'w0rp/ale'
+Plugin 'joom/latex-unicoder.vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -134,18 +135,6 @@ endfunction
 nnoremap <C-a> :call <SID>IncMetasynVar(1)<Enter>
 nnoremap <C-x> :call <SID>IncMetasynVar(-1)<Enter>
 
-" Direct the table of :digraphs to a read-only buffer.
-function! TabDigraphs()
-  redir => msg
-    silent digraphs
-  redir END
-  tabnew
-  setlocal buftype=nofile bufhidden=wipe
-  silent put =msg
-  setlocal nomodified
-endfunction
-command! TabDigraphs call TabDigraphs()
-
 "" File-specific.
 
 " Preserved tabs.
@@ -153,7 +142,7 @@ autocmd FileType make setlocal noexpandtab
 autocmd BufEnter nginx.conf setlocal noexpandtab
 
 " Small indents (2 whitespaces) e.g. Vim script, Lua, JavaScript/CSS/HTML.
-autocmd BufEnter .vimrc,*.lua,*.js,*.css,*.html call SetSmallIndentOptions()
+au BufEnter .vimrc,*.lua,*.js,*.css,*.html,*.agda call SetSmallIndentOptions()
 function SetSmallIndentOptions()
   setlocal tabstop=2 shiftwidth=2 softtabstop=2
 endfunction
@@ -171,7 +160,7 @@ endfunction
 autocmd BufWritePost *.rs call Rustfmt()
 function Rustfmt()
   let b:loc=line('.')
-  :silent %!rustfmt %
+  :silent %!rustfmt --unstable-features --config-path ~/.rustfmtrc %
   :edit!
   execute ':'.b:loc
 endfunction
@@ -199,6 +188,9 @@ autocmd BufEnter *.lua call CommentToggle('--')
 autocmd BufEnter *.go,*.js,*.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y,*.java,*.rs
   \ call CommentToggle('//')
 autocmd BufEnter *.py,*.sh call CommentToggle('#')
+" Agda syntax file from:
+" http://wiki.portal.chalmers.se/agda/pmwiki.php?n=Main.VIMEditing
+autocmd BufEnter *.agda setf agda
 
 "" Themes and plugins.
 
