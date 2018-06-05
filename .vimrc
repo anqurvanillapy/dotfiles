@@ -156,6 +156,16 @@ function PyBlack()
   execute ':'.b:loc
 endfunction
 
+" `html.unescape' for Python.
+function PyHtmlUnescape(c)
+python3 << EOS
+from html import unescape
+e = unescape(vim.eval("a:c"))
+vim.command("normal a{}".format(e))
+EOS
+  :startinsert!
+endfunction
+
 " `rustfmt' for Rust.
 autocmd BufWritePost *.rs call Rustfmt()
 function Rustfmt()
