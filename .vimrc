@@ -65,6 +65,8 @@ command! -range=% -nargs=0 Space2Tab execute
   \ ':silent! <line1>,<line2>s#^\( \{'.&ts.
   \ '\}\)\+#\=repeat("\t", len(submatch(0))/'.&ts.')'
 
+command! -nargs=* -complete=shellcmd Vsh execute "vnew | r! <args>"
+
 "" Editor.
 
 set encoding=utf-8
@@ -142,8 +144,8 @@ autocmd FileType make setlocal noexpandtab
 autocmd BufEnter nginx.conf setlocal noexpandtab
 
 " Small indents (2 whitespaces) e.g. Vim script, Lua, JavaScript/CSS/HTML.
-au BufEnter .vimrc,*.lua,*.js,*.css,*.html,*.agda call SetSmallIndentOptions()
-function SetSmallIndentOptions()
+au BufEnter .vimrc,*.lua,*.js,*.css,*.html,*.agda,*.hs call SetSmallIndent()
+function SetSmallIndent()
   setlocal tabstop=2 shiftwidth=2 softtabstop=2
 endfunction
 
