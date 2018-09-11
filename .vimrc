@@ -65,7 +65,7 @@ command! -range=% -nargs=0 Space2Tab execute
   \ ':silent! <line1>,<line2>s#^\( \{'.&ts.
   \ '\}\)\+#\=repeat("\t", len(submatch(0))/'.&ts.')'
 
-command! -nargs=* -complete=shellcmd Vsh execute "vnew | r! <args>"
+command! -nargs=* -complete=shellcmd Vsh execute "vview | r! <args>"
 
 "" Editor.
 
@@ -230,6 +230,7 @@ let g:ale_cpp_clang_options=
   \ '-std=c++17 -Wall'
   \ .' -I'.g:node_gyp_dir.g:node_gyp_latestver.'/include/node'
 let g:ale_cpp_gcc_options=g:ale_cpp_clang_options
+let g:ale_cpp_clangtidy_options='--std=c++17'
 
 """ Local settings.
 
