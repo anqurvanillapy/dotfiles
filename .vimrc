@@ -158,6 +158,15 @@ function PyBlack()
   execute ':'.b:loc
 endfunction
 
+" Haskell formatting.
+autocmd BufWritePost *.hs call StylishHaskll()
+function StylishHaskll()
+  let b:loc=line('.')
+  :silent %!stylish-haskell -i % > /dev/null
+  :edit!
+  execute ':'.b:loc
+endfunction
+
 " `html.unescape' for Python.
 function PyHtmlUnescape(c)
 python3 << EOS
@@ -177,9 +186,9 @@ function Rustfmt()
   execute ':'.b:loc
 endfunction
 
-" Indent with tabs, align with spaces in C/C++.
-autocmd BufEnter *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y call SetCppOptions()
-autocmd BufWritePre *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y Space2Tab
+" Indent with tabs, align with spaces in C/C++/Java.
+au BufEnter *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y,*.java call SetCppOptions()
+au BufWritePre *.c,*.cc,*.h,*.hpp,*.cpp,*.cxx,*.l,*.y,*.java Space2Tab
 function SetCppOptions()
   setlocal cindent
   setlocal cinoptions=(0,u0,U0

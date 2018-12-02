@@ -31,5 +31,6 @@ columns: 80
 newline: lf
 
 language_extensions:
-  - TemplateHaskell
   - CPP
+  - QuasiQuotes
+  - TemplateHaskell
