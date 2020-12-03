@@ -31,5 +31,6 @@ alias grs='git reset'
 alias grsh='git reset --hard'
 alias grvt='git checkout HEAD'
 alias gs='git status -s'
+alias gpla='find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xargs -I {} git -C {} pull'
 
 alias ppjson='python3 -m json.tool'
