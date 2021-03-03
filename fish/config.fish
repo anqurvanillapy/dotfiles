@@ -37,3 +37,11 @@ alias gpla='find . -maxdepth 3 -name .git -type d | rev | cut -c 6- | rev | xarg
 alias json='python3 -m json.tool'
 
 alias !!='echo $history[1] | xargs -o'
+
+#
+# pyenv
+#
+
+if command -v pyenv 1>/dev/null 2>&1
+  pyenv init - | source
+end
